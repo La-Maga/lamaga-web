@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+
+<title>Talleres | La Maga</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Jura',sans-serif;
+    background:#0D1406;
+    color:#F5F4EC;
+    overflow-x:hidden;
+}
+
+/* LOGO */
+
+.logo{
+    position:fixed;
+    top:25px;
+    left:25px;
+    width:140px;
+    z-index:5000;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* MENU */
+
+.menu-button{
+    position:fixed;
+    top:18px;
+    right:30px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:42px;
+    cursor:pointer;
+    z-index:5001;
+}
+
+.fullscreen-menu{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    opacity:0;
+    visibility:hidden;
+    transition:.4s;
+    z-index:9999;
+}
+
+.fullscreen-menu.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.fullscreen-menu a{
+    color:#F5F4EC;
+    text-decoration:none;
+    font-size:28px;
+    letter-spacing:3px;
+}
+
+.close-button{
+    position:absolute;
+    top:18px;
+    right:30px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:42px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+
+    position:relative;
+
+    height:120vh;
+
+    overflow:hidden;
+
+    background:#0D1406;
+}
+
+.layer-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center -60px;
+    z-index:1;
+}
+
+.layer-text{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center -60px;
+    z-index:2;
+}
+
+.layer-leaves{
+
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:3;
+
+    pointer-events:none;
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:300px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(13,20,6,0),
+        rgba(13,20,6,1)
+    );
+
+    z-index:4;
+}
+
+/* CONTENIDO */
+
+.intro{
+
+    max-width:950px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:120px 30px;
+}
+
+.tag{
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#A3B18A;
+
+    margin-bottom:20px;
+}
+
+.intro h1{
+
+    font-size:58px;
+
+    font-weight:300;
+
+    margin-bottom:20px;
+}
+
+.subtitle{
+
+    font-size:24px;
+
+    color:#F5F4EC;
+
+    margin-bottom:45px;
+}
+
+.intro p{
+
+    line-height:1.9;
+
+    color:#A3B18A;
+
+    margin-bottom:22px;
+
+    font-size:20px;
+}
+
+/* BLOQUES */
+
+/* CAPÍTULOS */
+
+.chapter{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+    margin-top:-40px;
+}
+
+.chapter::before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:220px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(13,20,6,0),
+        rgba(13,20,6,1)
+    );
+
+    z-index:5;
+}
+
+.chapter img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.chapter::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.20);
+}
+
+.chapter-text{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:20;
+
+    max-width:520px;
+}
+
+.chapter-text.left{
+    left:8%;
+}
+
+.chapter-text.right{
+    right:8%;
+    text-align:right;
+}
+
+.chapter-text h2{
+
+    font-size:72px;
+
+    font-weight:300;
+
+    margin-bottom:20px;
+
+    color:#F5F4EC;
+
+    text-shadow:0 0 30px rgba(0,0,0,.7);
+}
+
+.chapter-text p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#F5F4EC;
+
+    text-shadow:0 0 20px rgba(0,0,0,.8);
+}
+
+/* SELVA */
+
+.selva{
+
+    position:relative;
+
+    height:100vh;
+
+    overflow:hidden;
+}
+
+.selva img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.selva-content{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    background:rgba(0,0,0,.3);
+
+    padding:30px;
+}
+
+.selva-content h2{
+
+    font-size:60px;
+
+    font-weight:300;
+
+    margin-bottom:20px;
+}
+
+.selva-content p{
+
+    font-size:24px;
+
+    max-width:700px;
+}
+
+/* PROXIMOS */
+
+.next{
+
+    padding:140px 30px;
+
+    text-align:center;
+}
+
+.next h2{
+
+    font-size:50px;
+
+    font-weight:300;
+
+    margin-bottom:20px;
+}
+
+.next p{
+
+    color:#A3B18A;
+
+    margin-bottom:80px;
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+    max-width:1200px;
+
+    margin:auto;
+}
+
+.card{
+
+    border:1px solid rgba(163,177,138,.25);
+
+    padding:60px 20px;
+
+    color:#A3B18A;
+}
+
+/* FOOTER */
+
+.footer{
+
+    background:#0D1406;
+
+    text-align:center;
+
+    padding:30px;
+
+    font-size:14px;
+}
+
+.footer a{
+
+    color:#A3B18A;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.footer a:hover{
+
+    color:#F5F4EC;
+}
+
+.footer span{
+
+    color:#588157;
+
+    margin:0 10px;
+}
+
+/* MÓVIL */
+
+@media(max-width:768px){
+
+    .logo{
+        width:95px;
+    }
+
+    .hero{
+        height:80vh;
+    }
+
+    .intro{
+        position:relative;
+        top:-60px;
+        padding:40px 25px 60px 25px;
+    }
+
+}
+
+    .intro h1{
+        font-size:38px;
+    }
+
+    .subtitle{
+        font-size:20px;
+    }
+
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .selva-content h2{
+        font-size:42px;
+    }
+
+    .chapter-text{
+
+    left:30px !important;
+    right:30px !important;
+
+    text-align:left !important;
+
+    max-width:none;
+}
+
+.chapter-text h2{
+    font-size:42px;
+}
+
+.chapter-text p{
+    font-size:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="logo">
+<img src="img/logo-lamaga.png" alt="">
+</a>
+
+<button class="menu-button" onclick="openMenu()">☰</button>
+
+<div id="menu" class="fullscreen-menu">
+
+<button class="close-button" onclick="closeMenu()">×</button>
+
+<a href="index.html">≫ INICIO ≪</a>
+<a href="libros.html">≫ LIBROS ≪</a>
+<a href="talleres.html">≫ TALLERES ≪</a>
+<a href="colecciones.html">≫ COLECCIONES ≪</a>
+<a href="sobre.html">≫ SOBRE LA MAGA ≪</a>
+
+</div>
+
+<section class="hero">
+
+<img src="img/scapeworld.png" class="layer-bg" alt="">
+<img src="img/Scapeworldtext.png" class="layer-text" alt="">
+<img src="img/hojas.png" class="layer-leaves" alt="">
+
+</section>
+
+<section class="intro">
+
+<div class="tag">
+Experiencia
+</div>
+
+<h1>EXIT-US: SCAPE WORLD</h1>
+
+<div class="subtitle">
+Libérate de la ilusión
+</div>
+
+<p>
+Bienvenido a una experiencia inmersiva diseñada para explorar las proyecciones de tu propia mente y descubrir cómo escapar de la realidad que has creado.
+</p>
+
+<p>
+Atrapados en un mundo moldeado por la cultura, la educación y las creencias heredadas, rara vez cuestionamos la forma en que percibimos la realidad.
+</p>
+
+<p>
+Pero ¿qué sucede cuando descubrimos que somos los autores de aquello que experimentamos?
+</p>
+
+</section>
+
+<section class="chapter">
+
+    <img src="img/ciegas.png" alt="">
+
+    <div class="chapter-text left">
+
+        <h2>La ilusión</h2>
+
+        <p>
+            Vivimos identificados con ideas, historias y estructuras
+            que asumimos como reales.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="chapter">
+
+    <img src="img/pluma7.png" alt="">
+
+    <div class="chapter-text right">
+
+        <h2>La creación</h2>
+
+        <p>
+            Cada pensamiento deja una huella.
+            Cada creencia moldea el mundo que habitamos.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="chapter">
+
+    <img src="img/viaje.png" alt="">
+
+    <div class="chapter-text left">
+
+        <h2>El viaje</h2>
+
+        <p>
+            A través de dinámicas, desafíos y símbolos descubrirás
+            nuevas formas de observar tu realidad.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="selva">
+
+<img src="img/selva.png" alt="">
+
+<div class="selva-content">
+
+<h2>La salida</h2>
+
+<p>
+La verdadera salida aparece cuando descubres que siempre estuvo dentro de quien observa.
+</p>
+
+</div>
+
+</section>
+
+<section class="next">
+
+<h2>Próximas experiencias</h2>
+
+<p>
+Nuevos encuentros y exploraciones llegarán próximamente.
+</p>
+
+<div class="cards">
+
+<div class="card">Próximamente</div>
+
+<div class="card">Próximamente</div>
+
+<div class="card">Próximamente</div>
+
+</div>
+
+</section>
+
+    <footer class="footer">
+
+    <a href="aviso-legal.html">Aviso Legal</a>
+
+    <span> · </span>
+
+    <a href="privacidad.html">Privacidad</a>
+
+    <span> · </span>
+
+    <a href="mailto:lamagaoficial@proton.me">Contacto</a>
+
+</footer>
+
+<script>
+
+function openMenu(){
+    document.getElementById('menu').classList.add('active');
+}
+
+function closeMenu(){
+    document.getElementById('menu').classList.remove('active');
+}
+
+/* PARALLAX */
+
+window.addEventListener('scroll', () => {
+
+    const y = window.scrollY;
+
+    document.querySelector('.layer-bg').style.transform =
+        `translateY(${y * 0.03}px)`;
+
+    document.querySelector('.layer-text').style.transform =
+        `translateY(${y * 0.08}px)`;
+
+    document.querySelector('.layer-leaves').style.transform =
+        `translateY(${y * 0.15}px)`;
+
+});
+
+
+</script>
+
+</body>
+</html>

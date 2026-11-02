@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+
+<title>La Maga</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:"Avenir Next", "Montserrat", sans-serif;
+}
+
+.video-container{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.video-container video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+    z-index:1;
+}
+
+/* LOGO */
+
+.logo{
+    position:absolute;
+    top:25px;
+    left:30px;
+    width:140px;
+    z-index:1000;
+}
+
+/* BOTÓN MENÚ */
+
+.menu-button{
+    position:absolute;
+    top:18px;
+    right:30px;
+
+    z-index:1001;
+
+    background:none;
+    border:none;
+
+    color:white;
+
+    font-size:42px;
+    cursor:pointer;
+}
+
+/* MENÚ PANTALLA COMPLETA */
+
+.fullscreen-menu{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.88);
+
+    backdrop-filter:blur(4px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:35px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:0.4s;
+
+    z-index:9999;
+}
+
+.fullscreen-menu.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.fullscreen-menu a{
+
+    color:#f3e7c8;
+
+    text-decoration:none;
+
+    font-size:28px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    transition:0.3s;
+}
+
+.fullscreen-menu a:hover{
+    color:white;
+}
+
+.close-button{
+
+    position:absolute;
+
+    top:18px;
+
+    right:30px;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:42px;
+
+    cursor:pointer;
+}
+
+/* TEXTO CENTRAL */
+
+.hero-content{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:5;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+    transform:translateY(120px);
+}
+
+.tagline{
+
+    color:#f3e7c8;
+
+    font-size:15px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.main-text{
+
+    color:white;
+
+    max-width:850px;
+
+    line-height:1.15;
+
+    font-size:clamp(28px,4vw,58px);
+
+    font-weight:300;
+
+    font-family:Georgia, serif;
+
+    text-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+/* DECORACIÓN */
+
+.landing-decoration{
+    width:450px;
+    height:auto;
+    margin-top:20px;
+    opacity:.9;
+}
+
+/* FOOTER */
+
+.footer{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    z-index:20;
+
+    font-size:12px;
+}
+
+.footer a{
+
+    color:rgba(255,255,255,.70);
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.footer a:hover{
+
+    color:white;
+}
+
+.footer span{
+
+    color:rgba(255,255,255,.40);
+
+    margin:0 8px;
+}
+
+/* MÓVIL */
+
+@media(max-width:768px){
+
+    .logo{
+        width:90px;
+        left:20px;
+        top:20px;
+    }
+
+    .menu-button{
+        right:20px;
+        top:15px;
+        font-size:38px;
+    }
+
+    .main-text{
+        font-size:clamp(24px,8vw,42px);
+    }
+
+    .tagline{
+        font-size:11px;
+    }
+
+    .hero-content{
+        transform:translateY(60px);
+    }
+
+    .fullscreen-menu a{
+        font-size:22px;
+    }
+
+    .landing-decoration{
+    width:200px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="video-container">
+
+    <video autoplay muted loop playsinline>
+        <source src="video/portada.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <a href="index.html">
+        <img src="img/logo-lamaga.png" alt="La Maga" class="logo">
+    </a>
+
+    <button class="menu-button" onclick="openMenu()">
+        ☰
+    </button>
+
+    <div id="menu" class="fullscreen-menu">
+
+        <button class="close-button" onclick="closeMenu()">
+            ×
+        </button>
+
+        <a href="libros.html">≫ Libros ≪</a>
+
+        <a href="talleres.html">≫ Talleres ≪</a>
+
+        <a href="colecciones.html">≫ Colecciones ≪</a>
+
+        <a href="sobre.html">≫ Sobre La Maga ≪</a>
+
+    </div>
+
+    <div class="hero-content">
+
+        <div class="tagline">
+            No es Magia, es Memoria.
+        </div>
+
+        <div class="main-text">
+            Nada afuera cambiará...
+            <br>
+            hasta que recuerdes quién eres
+        </div>
+
+        <img src="img/decoracion-landing.png"
+     alt=""
+     class="landing-decoration">
+
+    </div>
+
+    <footer class="footer">
+
+    <a href="aviso-legal.html">Aviso Legal</a>
+
+    <span> · </span>
+
+    <a href="privacidad.html">Privacidad</a>
+
+    <span> · </span>
+
+    <a href="mailto:lamagaoficial@proton.me">Contacto</a>
+
+</footer>
+
+<script>
+
+function openMenu(){
+    document.getElementById('menu').classList.add('active');
+}
+
+function closeMenu(){
+    document.getElementById('menu').classList.remove('active');
+}
+
+</script>
+
+</body>
+</html>
