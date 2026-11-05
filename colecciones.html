@@ -203,11 +203,13 @@ cursor:pointer;
 
 .intro-collections h1{
 
-    font-size:60px;
+    font-size:58px;
 
-    font-weight:300;
+    font-weight:600;
 
-    margin-bottom:25px;
+    line-height:1.1;
+
+    margin-bottom:15px;
 }
 
 .intro-subtitle{
@@ -325,6 +327,173 @@ color:#222;
 .b3{
 background:#55684a;
 color:white;
+}
+
+/* CALENDARIO */
+
+.calendar-section{
+
+    background:#0D1406;
+
+    padding:100px 40px;
+}
+
+.calendar-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.calendar-cover img{
+
+    width:100%;
+
+    border-radius:10px;
+
+    display:block;
+}
+
+.calendar-info h2{
+
+    font-size:58px;
+
+    font-weight:600;
+
+    line-height:1.1;
+
+    margin-bottom:15px;
+}
+
+.calendar-info h3{
+
+    font-size:28px;
+
+    font-weight:normal;
+
+    color:#c9943a;
+
+    margin-bottom:35px;
+}
+
+.calendar-info p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#f3e7c8;
+
+    margin-bottom:25px;
+}
+
+.calendar-info ul{
+
+    padding-left:25px;
+
+    margin-bottom:35px;
+}
+
+.calendar-info li{
+
+    font-size:21px;
+
+    line-height:1.3;
+
+    color:#f3e7c8;
+
+    margin-bottom:0;
+}
+
+.calendar-button{
+
+    display:inline-block;
+
+    padding:18px 40px;
+
+    background:#496600;
+
+    border-radius:50px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    transition:.3s;
+}
+
+.calendar-button:hover{
+
+    transform:scale(1.05);
+}
+
+.calendar-gallery{
+
+    max-width:1400px;
+
+    margin:70px auto 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+}
+
+.calendar-gallery img{
+
+    width:100%;
+
+    border-radius:8px;
+
+    display:block;
+
+    transition:.4s;
+}
+
+.calendar-gallery img:hover{
+
+    transform:scale(1.03);
+}
+
+@media(max-width:900px){
+
+    .calendar-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .calendar-info h2{
+
+        font-size:42px;
+    }
+
+    .calendar-info h3{
+
+        font-size:22px;
+    }
+
+    .calendar-info p,
+    .calendar-info li{
+
+        font-size:18px;
+    }
+
+    .calendar-gallery{
+
+        grid-template-columns:1fr;
+    }
+
 }
 
 /* INSTAGRAM */
@@ -566,8 +735,12 @@ font-size:42px;
     left:20px;
 }
 
+
+
 .intro-collections h1{
-    font-size:36px;
+    font-size:60px;
+    font-weight:600;
+    margin-bottom:25px;
 }
 
 }
@@ -620,6 +793,62 @@ font-size:42px;
         Cada una nace como un símbolo, un recordatorio y una
         invitación a volver a lo esencial.
     </p>
+
+</section>
+
+<section class="calendar-section">
+
+    <div class="calendar-container">
+
+        <div class="calendar-cover">
+
+            <img src="img/calendario_la_maga.png" alt="Calendario La Maga">
+
+        </div>
+
+        <div class="calendar-info">
+
+            <h2>CALENDARIO 2026</h2>
+
+            <h3>El Camino de la Guerrera</h3>
+
+            <p>
+                Mucho más que un calendario. Una compañera de viaje
+                para el año que comienza.
+            </p>
+
+            <ul>
+
+                <li>Fases lunares durante todo el año.</li>
+                <li>Solsticios, equinoccios y eclipses destacados.</li>
+                <li>Frases guía y reflexiones mensuales.</li>
+                <li>Mini rituales sencillos para integrar en tu día a día.</li>
+                <li>Ilustraciones inspiradas en la fuerza interior femenina.</li>
+
+            </ul>
+
+            <p>
+                Cada mes refleja una etapa del viaje interior y ofrece
+                una invitación a vivir con más presencia, claridad y conexión.
+            </p>
+
+            <a class="calendar-button" href="#">
+                ¡QUIERO UNO!
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="calendar-gallery">
+
+        <img src="img/enero.png" alt="Enero">
+
+        <img src="img/febrero.png" alt="Febrero">
+
+        <img src="img/noviembre.png" alt="Noviembre">
+
+    </div>
 
 </section>
 

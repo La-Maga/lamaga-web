@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Libros | La Maga</title>
+
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0D1406;
+    color:#F5F4EC;
+    font-family:'Jura',sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* LOGO */
+
+.logo{
+    position:fixed;
+    top:25px;
+    left:25px;
+    width:140px;
+    z-index:5000;
+}
+
+.logo img{
+    width:100%;
+    display:block;
+}
+
+/* MENU */
+
+.menu-button{
+    position:fixed;
+    top:18px;
+    right:30px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:42px;
+    cursor:pointer;
+    z-index:5001;
+}
+
+.fullscreen-menu{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    opacity:0;
+    visibility:hidden;
+    transition:.4s;
+    z-index:9999;
+}
+
+.fullscreen-menu.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.fullscreen-menu a{
+    color:#F5F4EC;
+    text-decoration:none;
+    font-size:28px;
+    letter-spacing:3px;
+}
+
+.close-button{
+    position:absolute;
+    top:18px;
+    right:30px;
+    background:none;
+    border:none;
+    color:white;
+    font-size:42px;
+    cursor:pointer;
+}
+
+/* CONTENIDO */
+
+.coming-soon{
+
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.coming-soon h1{
+
+    font-size:100px;
+
+    font-weight:300;
+
+    letter-spacing:12px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.15),
+        0 0 60px rgba(255,255,255,.08);
+
+    margin-bottom:20px;
+}
+
+.coming-soon p{
+
+    color:#A3B18A;
+
+    font-size:18px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+}
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+.footer a{
+
+    color:#A3B18A;
+
+    text-decoration:none;
+}
+
+.footer span{
+    margin:0 10px;
+}
+
+/* MÓVIL */
+
+@media(max-width:768px){
+
+    .logo{
+        width:95px;
+    }
+
+    .coming-soon h1{
+        font-size:48px;
+        letter-spacing:5px;
+    }
+
+    .coming-soon p{
+        font-size:14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="index.html" class="logo">
+    <img src="img/logo-lamaga.png" alt="">
+</a>
+
+<button class="menu-button" onclick="openMenu()">☰</button>
+
+<div id="menu" class="fullscreen-menu">
+
+    <button class="close-button" onclick="closeMenu()">×</button>
+
+    <a href="index.html">≫ INICIO ≪</a>
+    <a href="libros.html">≫ LIBROS ≪</a>
+    <a href="talleres.html">≫ TALLERES ≪</a>
+    <a href="colecciones.html">≫ COLECCIONES ≪</a>
+    <a href="sobre.html">≫ SOBRE LA MAGA ≪</a>
+
+</div>
+
+<section class="coming-soon">
+
+    <h1>PRÓXIMAMENTE</h1>
+
+    <p>Nueva colección de libros en preparación</p>
+
+</section>
+
+<footer class="footer">
+
+    <a href="aviso-legal.html">Aviso Legal</a>
+
+    <span> · </span>
+
+    <a href="privacidad.html">Privacidad</a>
+
+    <span> · </span>
+
+    <a href="mailto:lamagaoficial@proton.me">Contacto</a>
+
+    <br><br>
+
+    <div style="color:rgba(255,255,255,.55); font-size:11px;">
+        La Maga © 2027. All Rights Reserved.
+    </div>
+
+</footer>
+
+<script>
+
+function openMenu(){
+    document.getElementById('menu').classList.add('active');
+}
+
+function closeMenu(){
+    document.getElementById('menu').classList.remove('active');
+}
+
+</script>
+
+</body>
+</html>
