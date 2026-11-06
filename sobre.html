@@ -136,6 +136,7 @@ body{
     object-fit:cover;
     object-position:center;
     z-index:1;
+    filter:brightness(.85);
 }
 
 .hojas{
@@ -342,7 +343,9 @@ p{
 
 <section class="hero">
 
-    <img src="img/mujer.png" class="mujer" alt="">
+<video id="mujerVideo" class="mujer" autoplay muted playsinline>
+    <source src="video/woman.mp4" type="video/mp4">
+</video>
 
     <img src="img/hojas.png" class="hojas" alt="">
 
@@ -427,6 +430,15 @@ window.addEventListener('scroll', () => {
 
 });
 
+const video = document.getElementById("mujerVideo");
+
+video.addEventListener("timeupdate", () => {
+
+    if (video.currentTime >= video.duration - 0.15) {
+        video.pause();
+    }
+
+});
 </script>
 
 </body>
